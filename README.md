@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Miles With Nature - Modern Trekking Website
+
+A production-ready Next.js 14 (App Router) trekking application with a clean architecture, server-side logic, and responsive design.
+
+## Features
+
+- **Next.js 14+ App Router**: Modern routing with server components and layouts.
+- **Server Actions**: Clean form handling and administration logic without client-side API calls.
+- **Zod Validation**: Robust schema-based validation for all forms.
+- **Admin Dashboard**: Secure area for managing treks, blogs, and inquiries (Protected by Server Actions).
+- **Responsive Design**: Mobile-first approach using Tailwind CSS and Radix UI.
+- **Dynamic Content**: Trek and blog detail pages generated dynamically from mock data.
+- **Performance Optimized**: Using `next/image` for image optimization and optimized fonts.
+
+## Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Components**: Shadcn/ui (Radix UI + Lucide)
+- **Validation**: Zod
+- **Auth**: Custom logic with Server Actions and Cookies (No database required)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+ 
+- npm / yarn / pnpm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Set up environment variables:
+   Create a `.env` file and configure your admin credentials (see `.env.example`).
 
-## Learn More
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+### Admin Access
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **URL**: `/admin`
+- **Default Credentials**: admin@mileswithnature.com / admin123 (if using default .env)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Architecture
 
-## Deploy on Vercel
+The project follows a clean layered structure:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Presentation Layer**: UI components, pages, and global layouts in `app/` and `components/`.
+2. **Application Layer**: Server Actions (`lib/actions`) for handling business logic and form submissions.
+3. **Infrastructure**: Environment variables and site configuration.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+This project is optimized for deployment on **Vercel**.
+
+---
+
+Built with ?? for mountain lovers.
