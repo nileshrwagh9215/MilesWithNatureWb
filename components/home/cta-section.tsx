@@ -1,53 +1,108 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
+import { ArrowRight, Compass } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function CtaSection() {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  })
+
+  // Subtle parallax for the background image
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"])
+
   return (
-    <section className="relative overflow-hidden py-32 mx-4 mb-8 rounded-3xl">
-      <Image
-        src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&q=80&w=2070"
-        alt="Sunset from mountain summit"
-        fill
-        className="object-cover"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-      
-      <div className="relative z-10 mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="max-w-2xl">
-          <h2 className="text-balance font-serif text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight">
-            The Mountains Are <br />
-            <span className="text-secondary italic">Calling You</span>
-          </h2>
-          <p className="mt-6 text-pretty text-lg leading-relaxed text-white/80 font-light">
-            Whether you are a seasoned trekker or stepping onto a trail for the
-            first time, we have the perfect trek waiting for you. Join our next expedition.
-          </p>
-          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row">
-            <Button size="lg" asChild className="h-14 px-8 text-base font-bold shadow-2xl">
-              <Link href="/treks">
-                Book Your Adventure
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="h-14 px-8 text-base border-white/40 bg-white/5 text-white hover:bg-white/10 hover:text-white backdrop-blur-md"
+    <section ref={containerRef} className="px-6 py-24 sm:px-10">
+      <div className="relative overflow-hidden rounded-[2.5rem] bg-stone-100 min-h-[500px] flex items-center">
+        {/* Background Image with Parallax */}
+        <motion.div style={{ y }} className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&q=80&w=2070"
+            alt="Mountain summit"
+            fill
+            className="object-cover opacity-90 brightness-90"
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Sophisticated Light Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-stone-900/80 via-stone-900/40 to-transparent" />
+
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-8 lg:px-16 py-20">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex items-center gap-3 mb-6"
             >
-              <Link href="/contact">Inquire Now</Link>
-            </Button>
+              <Compass className="h-5 w-5 text-stone-300" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-300">
+                Ready for the journey?
+              </span>
+            </motion.div>
+
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-serif text-5xl font-light leading-[1.1] text-white sm:text-6xl lg:text-7xl"
+            >
+              The Mountains Are <br />
+              <span className="italic text-stone-300">Calling You</span>
+            </motion.h2>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-8 max-w-lg text-lg font-light leading-relaxed text-stone-200/90"
+            >
+              Whether you are a seasoned trekker or stepping onto a trail for the
+              first time, your perfect expedition starts here.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-12 flex flex-col items-start gap-4 sm:flex-row"
+            >
+              <Button 
+                size="lg" 
+                asChild 
+                className="h-14 rounded-full bg-white px-10 text-stone-900 hover:bg-stone-100 transition-transform hover:scale-105 active:scale-95"
+              >
+                <Link href="/treks" className="font-bold tracking-tight">
+                  Book Your Adventure
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="h-14 rounded-full border-white/30 bg-white/10 px-10 text-white backdrop-blur-md hover:bg-white hover:text-stone-900"
+              >
+                <Link href="/contact" className="font-medium">Inquire Now</Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
-      </div>
-      
-      {/* Decorative pulse element */}
-      <div className="absolute top-1/2 right-10 -translate-y-1/2 hidden lg:block">
-         <div className="h-64 w-64 rounded-full border border-white/10 animate-pulse" />
-         <div className="absolute inset-0 h-64 w-64 rounded-full border border-white/5 scale-125 transition-transform" />
+
+        {/* Abstract Corner Element */}
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
       </div>
     </section>
   )

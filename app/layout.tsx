@@ -1,37 +1,35 @@
-import type { Metadata, Viewport } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
-import { WhatsAppButton } from "@/components/whatsapp-button"
+import "./globals.css";
+import { Inter, Playfair_Display } from "next/font/google";
 
-import "./globals.css"
-
-const _inter = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-})
+  display: "swap",
+});
 
-const _playfair = Playfair_Display({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
-})
+  display: "swap",
+});
 
-export const metadata: Metadata = {
-  title: "Miles With Nature | Trekking Adventures",
-  description:
-    "Discover breathtaking treks across the most beautiful mountain ranges. Join Miles With Nature for unforgettable trekking experiences.",
-}
-
-export const viewport: Viewport = {
-  themeColor: "#2d6a4f",
-}
+export const metadata = {
+  title: "Miles with Nature",
+  description: "Explore Maharashtra’s finest treks.",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${_inter.variable} ${_playfair.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en">
+      <body
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+      >
+        {children}
+      </body>
     </html>
-  )
+  );
 }

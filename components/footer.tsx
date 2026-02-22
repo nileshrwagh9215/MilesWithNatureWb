@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Mail, Phone, MapPin, Instagram, Mountain } from "lucide-react"
+import { Phone, MapPin, Instagram, Mountain } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 
 const quickLinks = [

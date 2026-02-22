@@ -15,6 +15,7 @@ import {
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import { BookTrekButton } from "@/components/book-trek-button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -55,8 +56,8 @@ export default async function TrekDetailPage({ params }: TrekPageProps) {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
         <section className="relative flex min-h-[50vh] items-end overflow-hidden">
+          
           <Image
             src={trek.image}
             alt={trek.title}
@@ -65,7 +66,7 @@ export default async function TrekDetailPage({ params }: TrekPageProps) {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 from-black/80 via-black/40 to-transparent" />
           <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 lg:px-8">
             <Link
               href="/treks"
@@ -218,9 +219,7 @@ export default async function TrekDetailPage({ params }: TrekPageProps) {
 
                     <Separator className="my-6" />
 
-                    <Button className="w-full" size="lg" asChild>
-                      <Link href="/contact">Book This Trek</Link>
-                    </Button>
+                    <BookTrekButton className="w-full" trekName={trek.title} />
                     <p className="mt-3 text-center text-xs text-muted-foreground">
                       Contact us with any questions before booking.
                     </p>

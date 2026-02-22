@@ -1,17 +1,16 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-
+import { whatsappNumber } from "@/lib/data"
 export function WhatsAppButton() {
   const pathname = usePathname()
 
   if (pathname.startsWith("/admin")) return null
 
-  const phoneNumber = "917020212486"
   const message = encodeURIComponent(
     "Hi! I am interested in joining a trek with Miles With Nature. Can you share more details?"
   )
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
 
   return (
     <a
