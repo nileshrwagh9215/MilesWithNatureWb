@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
@@ -9,16 +10,19 @@ interface BookTrekButtonProps {
 }
 import { whatsappNumber } from "@/lib/data";
 export function BookTrekButton({ trekName, className }: BookTrekButtonProps) {
+  const pathname = usePathname();
+
   const handleBookClick = () => {
-    const message = `🌟 *Trek Booking Inquiry*
+    const currentUrl = `${typeof window !== "undefined" ? window.location.origin : ""}${pathname}`;
+    const message = `🌟 Trek Booking Inquiry
 
 I am interested in booking the following trek:
-🏔️ *${trekName}*
+🏔️ ${trekName}
 
 Please share the available dates and further details.
 
 ---
-_Sent via Miles With Nature Website_`;
+Sent via Miles With Nature Website  - ${currentUrl}`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");

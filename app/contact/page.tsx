@@ -49,7 +49,7 @@ const contactOptions = [
     action: "Start Chat",
     contact: "WhatsApp Business",
     availability: "24/7 Available",
-    href: "https://wa.me/917020212486?text=Hi! I am interested in joining a trek with Miles With Nature. Can you share more details?",
+    href: "https://wa.me/918010283201?text=Hi! I am interested in joining a trek with Miles With Nature. Can you share more details?",
     bgGradient: "bg-gradient-to-br from-green-500 to-green-600",
     iconBg: "bg-green-500/20 text-green-600",
   },
@@ -67,9 +67,9 @@ const contactOptions = [
 ];
 
 const officeInfo = {
-  address: ["Old Manali Road", "Manali, Himachal Pradesh 175131", "India"],
+  address: ["Aundh, Pune", "Pune, Maharashtra 411001", "India"],
   email: ["hello@mileswithnature.com", "bookings@mileswithnature.com"],
-  phone: "+91 98765 43210",
+  phone: "+91 80102 83201",
 };
 
 export default function ContactPage() {

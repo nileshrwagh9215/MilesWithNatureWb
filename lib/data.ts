@@ -537,7 +537,7 @@ export const safetyTips = [
 ]
 
 
-export const whatsappNumber = "+91-8010283201" 
+export const whatsappNumber = "918010283201" 
 export const maharashtraTrekNames: string[] = [
   "Harishchandragad",
   "Kalsubai",

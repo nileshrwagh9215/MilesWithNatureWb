@@ -1,4 +1,5 @@
 import "./globals.css";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Inter, Playfair_Display } from "next/font/google";
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
       >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
